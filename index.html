@@ -1,0 +1,888 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Samuel Colmenares — Texas A&M mechanical engineering student portfolio featuring CAD, mechanical design, analysis, prototyping, leadership, and project experience." />
+  <meta name="theme-color" content="#111827" />
+  <title>Samuel Colmenares | Mechanical Engineering Portfolio</title>
+  <style>
+    :root {
+      --bg: #f7f8fb;
+      --surface: #ffffff;
+      --surface-2: #f0f3f8;
+      --ink: #111827;
+      --muted: #5f6b7a;
+      --line: #dfe4ea;
+      --accent: #7a1f2b;
+      --accent-2: #9f2f3f;
+      --accent-soft: #f8ecee;
+      --shadow: 0 18px 50px rgba(17, 24, 39, 0.08);
+      --radius: 22px;
+      --max: 1120px;
+    }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background:
+        radial-gradient(circle at 10% 0%, rgba(122,31,43,.08), transparent 28rem),
+        var(--bg);
+      color: var(--ink);
+      line-height: 1.65;
+    }
+
+    a { color: inherit; text-decoration: none; }
+    img { max-width: 100%; }
+    button, a { -webkit-tap-highlight-color: transparent; }
+
+    .wrap {
+      width: min(var(--max), calc(100% - 40px));
+      margin: 0 auto;
+    }
+
+    .nav-shell {
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      backdrop-filter: blur(18px);
+      background: rgba(247, 248, 251, 0.84);
+      border-bottom: 1px solid rgba(223, 228, 234, .8);
+    }
+
+    nav {
+      min-height: 72px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 24px;
+    }
+
+    .brand {
+      font-weight: 850;
+      letter-spacing: -0.03em;
+      font-size: 1.08rem;
+    }
+
+    .brand span {
+      color: var(--accent);
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 22px;
+      font-size: .95rem;
+      color: var(--muted);
+      font-weight: 650;
+    }
+
+    .nav-links a:hover { color: var(--accent); }
+
+    .nav-cta {
+      color: white !important;
+      background: var(--ink);
+      padding: 10px 14px;
+      border-radius: 999px;
+    }
+
+    .hero {
+      padding: 86px 0 58px;
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1.3fr .7fr;
+      gap: 50px;
+      align-items: center;
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 9px;
+      padding: 7px 12px;
+      border-radius: 999px;
+      background: var(--accent-soft);
+      color: var(--accent);
+      font-weight: 780;
+      font-size: .83rem;
+      letter-spacing: .02em;
+      margin-bottom: 20px;
+    }
+
+    .dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: var(--accent);
+      box-shadow: 0 0 0 5px rgba(122,31,43,.10);
+    }
+
+    h1 {
+      font-size: clamp(3rem, 7vw, 6.4rem);
+      line-height: .94;
+      letter-spacing: -0.065em;
+      margin: 0 0 24px;
+      max-width: 860px;
+    }
+
+    .hero-copy {
+      max-width: 760px;
+      color: var(--muted);
+      font-size: clamp(1.05rem, 2vw, 1.25rem);
+      margin: 0;
+    }
+
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-top: 30px;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      min-height: 48px;
+      padding: 0 18px;
+      border-radius: 12px;
+      font-weight: 780;
+      border: 1px solid var(--line);
+      background: var(--surface);
+      transition: .18s ease;
+    }
+
+    .btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 12px 26px rgba(17, 24, 39, .10);
+    }
+
+    .btn-primary {
+      border-color: var(--accent);
+      background: var(--accent);
+      color: #fff;
+    }
+
+    .hero-card {
+      background: var(--ink);
+      color: white;
+      border-radius: 30px;
+      padding: 30px;
+      box-shadow: var(--shadow);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero-card::after {
+      content: "";
+      position: absolute;
+      width: 230px;
+      height: 230px;
+      border-radius: 50%;
+      background: rgba(255,255,255,.05);
+      right: -90px;
+      top: -90px;
+    }
+
+    .monogram {
+      width: 74px;
+      height: 74px;
+      display: grid;
+      place-items: center;
+      border-radius: 20px;
+      background: linear-gradient(135deg, var(--accent-2), var(--accent));
+      font-weight: 900;
+      font-size: 1.35rem;
+      margin-bottom: 42px;
+      position: relative;
+      z-index: 1;
+    }
+
+    .mini-label {
+      color: #b7c0cc;
+      font-size: .78rem;
+      text-transform: uppercase;
+      letter-spacing: .12em;
+      font-weight: 800;
+    }
+
+    .hero-card h2 {
+      font-size: 1.7rem;
+      line-height: 1.15;
+      margin: 9px 0 18px;
+      letter-spacing: -.03em;
+    }
+
+    .hero-card p {
+      color: #d1d7df;
+      margin: 0;
+    }
+
+    .stats {
+      margin-top: 28px;
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 10px;
+    }
+
+    .stat {
+      padding: 14px 12px;
+      border: 1px solid rgba(255,255,255,.12);
+      border-radius: 14px;
+      background: rgba(255,255,255,.04);
+    }
+
+    .stat strong {
+      display: block;
+      font-size: 1.08rem;
+      letter-spacing: -.02em;
+    }
+
+    .stat span {
+      color: #aeb8c5;
+      font-size: .78rem;
+    }
+
+    section {
+      padding: 72px 0;
+      scroll-margin-top: 86px;
+    }
+
+    .section-head {
+      display: grid;
+      grid-template-columns: .58fr 1.42fr;
+      gap: 34px;
+      align-items: end;
+      margin-bottom: 30px;
+    }
+
+    .kicker {
+      color: var(--accent);
+      font-weight: 850;
+      text-transform: uppercase;
+      letter-spacing: .12em;
+      font-size: .78rem;
+    }
+
+    .section-head h2 {
+      font-size: clamp(2rem, 4vw, 3.4rem);
+      line-height: 1.03;
+      margin: 4px 0 0;
+      letter-spacing: -.05em;
+    }
+
+    .section-head p {
+      color: var(--muted);
+      margin: 0;
+      font-size: 1.02rem;
+    }
+
+    .grid {
+      display: grid;
+      gap: 18px;
+    }
+
+    .grid-3 { grid-template-columns: repeat(3, 1fr); }
+    .grid-2 { grid-template-columns: repeat(2, 1fr); }
+
+    .card {
+      background: var(--surface);
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      padding: 26px;
+      box-shadow: 0 10px 30px rgba(17,24,39,.035);
+    }
+
+    .project-card {
+      min-height: 355px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    .project-num {
+      font-size: .78rem;
+      color: var(--accent);
+      font-weight: 850;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+    }
+
+    .project-card h3, .card h3 {
+      font-size: 1.35rem;
+      line-height: 1.2;
+      margin: 10px 0 12px;
+      letter-spacing: -.025em;
+    }
+
+    .card p { color: var(--muted); margin: 0; }
+
+    .project-points {
+      margin: 18px 0 0;
+      padding-left: 18px;
+      color: var(--muted);
+    }
+
+    .project-points li + li { margin-top: 8px; }
+
+    .tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 7px;
+      margin-top: 22px;
+    }
+
+    .tag {
+      font-size: .77rem;
+      font-weight: 760;
+      padding: 6px 9px;
+      border-radius: 999px;
+      background: var(--surface-2);
+      color: #344052;
+      border: 1px solid #e4e8ee;
+    }
+
+    .feature-project {
+      grid-column: span 2;
+      min-height: 390px;
+      background:
+        linear-gradient(145deg, rgba(122,31,43,.97), rgba(79,18,28,.97));
+      color: white;
+      border: none;
+    }
+
+    .feature-project p,
+    .feature-project .project-points {
+      color: #f5dde1;
+    }
+
+    .feature-project .project-num { color: #ffd6dd; }
+    .feature-project .tag {
+      background: rgba(255,255,255,.10);
+      border-color: rgba(255,255,255,.13);
+      color: white;
+    }
+
+    .timeline {
+      display: grid;
+      gap: 16px;
+    }
+
+    .timeline-item {
+      display: grid;
+      grid-template-columns: 170px 1fr;
+      gap: 24px;
+      background: var(--surface);
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      padding: 24px;
+    }
+
+    .timeline-meta {
+      color: var(--accent);
+      font-weight: 820;
+      font-size: .86rem;
+    }
+
+    .timeline-item h3 {
+      margin: 0 0 5px;
+      font-size: 1.2rem;
+      letter-spacing: -.02em;
+    }
+
+    .timeline-item h4 {
+      margin: 0 0 10px;
+      color: var(--muted);
+      font-size: .94rem;
+      font-weight: 750;
+    }
+
+    .timeline-item p {
+      margin: 0;
+      color: var(--muted);
+    }
+
+    .skill-card h3 {
+      margin-top: 0;
+      font-size: 1.08rem;
+    }
+
+    .skill-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+
+    .skill {
+      border: 1px solid var(--line);
+      background: var(--bg);
+      border-radius: 10px;
+      padding: 8px 10px;
+      color: #384558;
+      font-size: .88rem;
+      font-weight: 650;
+    }
+
+    .cert-card {
+      display: flex;
+      flex-direction: column;
+      gap: 15px;
+    }
+
+    .cert-card .btn {
+      align-self: flex-start;
+      margin-top: auto;
+    }
+
+    .contact-box {
+      border-radius: 30px;
+      padding: 44px;
+      background: var(--ink);
+      color: white;
+      display: grid;
+      grid-template-columns: 1.2fr .8fr;
+      gap: 30px;
+      align-items: center;
+    }
+
+    .contact-box h2 {
+      font-size: clamp(2rem, 4vw, 3.5rem);
+      line-height: 1;
+      letter-spacing: -.05em;
+      margin: 0 0 14px;
+    }
+
+    .contact-box p {
+      color: #c8d0da;
+      margin: 0;
+      max-width: 650px;
+    }
+
+    .contact-actions {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      align-items: stretch;
+    }
+
+    .contact-actions .btn {
+      border-color: rgba(255,255,255,.13);
+      background: rgba(255,255,255,.08);
+      color: white;
+    }
+
+    .contact-actions .btn:first-child {
+      background: white;
+      color: var(--ink);
+    }
+
+    footer {
+      padding: 30px 0 42px;
+      color: var(--muted);
+      font-size: .88rem;
+    }
+
+    .footer-row {
+      border-top: 1px solid var(--line);
+      padding-top: 24px;
+      display: flex;
+      justify-content: space-between;
+      gap: 18px;
+      flex-wrap: wrap;
+    }
+
+    @media (max-width: 900px) {
+      .hero-grid,
+      .section-head,
+      .contact-box {
+        grid-template-columns: 1fr;
+      }
+      .grid-3, .grid-2 { grid-template-columns: 1fr; }
+      .feature-project { grid-column: span 1; }
+      .nav-links a:not(.nav-cta) { display: none; }
+      .hero { padding-top: 58px; }
+      .hero-card { max-width: 560px; }
+      .timeline-item { grid-template-columns: 1fr; gap: 9px; }
+    }
+
+    @media (max-width: 560px) {
+      .wrap { width: min(100% - 24px, var(--max)); }
+      nav { min-height: 64px; }
+      .nav-cta { padding: 9px 12px; }
+      .hero { padding: 44px 0 30px; }
+      h1 { font-size: clamp(3rem, 17vw, 4.7rem); }
+      section { padding: 54px 0; }
+      .card, .timeline-item { padding: 20px; }
+      .stats { grid-template-columns: 1fr; }
+      .contact-box { padding: 28px 22px; }
+      .hero-actions .btn { width: 100%; }
+    }
+  </style>
+</head>
+<body>
+  <header class="nav-shell">
+    <div class="wrap">
+      <nav aria-label="Primary navigation">
+        <a class="brand" href="#top">Samuel <span>Colmenares</span></a>
+        <div class="nav-links">
+          <a href="#projects">Projects</a>
+          <a href="#experience">Experience</a>
+          <a href="#skills">Skills</a>
+          <a href="#leadership">Leadership</a>
+          <a class="nav-cta" href="Samuel_Colmenares_Resume.pdf" target="_blank" rel="noopener">Resume ↗</a>
+        </div>
+      </nav>
+    </div>
+  </header>
+
+  <main id="top">
+    <section class="hero">
+      <div class="wrap hero-grid">
+        <div>
+          <div class="eyebrow"><span class="dot"></span> Seeking Summer 2027 Mechanical Engineering Opportunities</div>
+          <h1>Design. Analyze. Build.</h1>
+          <p class="hero-copy">
+            I’m Samuel Colmenares, a Mechanical Engineering student at Texas A&amp;M University focused on CAD,
+            mechanical design, analysis, prototyping, and solving practical engineering problems.
+          </p>
+          <div class="hero-actions">
+            <a class="btn btn-primary" href="#projects">View Engineering Projects</a>
+            <a class="btn" href="Samuel_Colmenares_Resume.pdf" target="_blank" rel="noopener">Download Resume</a>
+            <a class="btn" href="mailto:samucolme@gmail.com">Email Me</a>
+          </div>
+        </div>
+
+        <aside class="hero-card" aria-label="Portfolio summary">
+          <div class="monogram">SC</div>
+          <div class="mini-label">Mechanical Engineering</div>
+          <h2>Texas A&amp;M University<br />Expected 2028</h2>
+          <p>
+            Hands-on experience across SolidWorks design, 3D printing, structural analysis, AutoCAD, Inventor,
+            Revit, Excel, and Python.
+          </p>
+          <div class="stats">
+            <div class="stat"><strong>3.16</strong><span>GPA</span></div>
+            <div class="stat"><strong>2028</strong><span>Expected Grad.</span></div>
+            <div class="stat"><strong>EN / ES</strong><span>Fluent</span></div>
+          </div>
+        </aside>
+      </div>
+    </section>
+
+    <section id="about">
+      <div class="wrap">
+        <div class="section-head">
+          <div>
+            <div class="kicker">About</div>
+            <h2>Engineering with a practical mindset.</h2>
+          </div>
+          <p>
+            My work combines mechanical design, CAD, analytical problem solving, and physical prototyping.
+            I enjoy moving from an engineering idea to a model, evaluating the design, and refining it based on
+            calculations, testing, and real-world performance.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <section id="projects">
+      <div class="wrap">
+        <div class="section-head">
+          <div>
+            <div class="kicker">Selected Work</div>
+            <h2>Engineering Projects</h2>
+          </div>
+          <p>
+            Coursework projects that demonstrate mechanical design, analysis, optimization, CAD,
+            manufacturing, and collaborative engineering.
+          </p>
+        </div>
+
+        <div class="grid grid-2">
+          <article class="card project-card feature-project">
+            <div>
+              <div class="project-num">MEEN 305 · Structural Design &amp; Analysis</div>
+              <h3>Structurally Optimized Beam Design, Analysis &amp; Testing</h3>
+              <ul class="project-points">
+                <li>Completed five beam design iterations as part of a 20-design team optimization project.</li>
+                <li>Minimized material while maintaining a minimum 1.5 factor of safety under two loading conditions.</li>
+                <li>Applied bending-moment, section-property, von Mises stress, and deformation analysis in Excel.</li>
+                <li>Supported experimental setup and simulations comparing predicted and measured beam behavior.</li>
+                <li>Created CAD for a design iteration and helped refine the Excel optimization model.</li>
+              </ul>
+            </div>
+            <div class="tags">
+              <span class="tag">Structural Analysis</span>
+              <span class="tag">Excel</span>
+              <span class="tag">CAD</span>
+              <span class="tag">Optimization</span>
+              <span class="tag">Testing</span>
+              <span class="tag">Factor of Safety</span>
+            </div>
+          </article>
+
+          <article class="card project-card">
+            <div>
+              <div class="project-num">MEEN 210 · Mechanical Design</div>
+              <h3>SolidWorks Mechanical Toy Design &amp; 3D Printing</h3>
+              <ul class="project-points">
+                <li>Designed and modeled a functional mechanical toy in SolidWorks using interacting gears.</li>
+                <li>Created CAD parts and the full assembly to produce controlled mechanical motion.</li>
+                <li>3D printed the design and evaluated component fit and gear interaction.</li>
+                <li>Refined the mechanism to produce a working physical assembly.</li>
+              </ul>
+            </div>
+            <div class="tags">
+              <span class="tag">SolidWorks</span>
+              <span class="tag">Assemblies</span>
+              <span class="tag">Gears</span>
+              <span class="tag">3D Printing</span>
+              <span class="tag">Prototyping</span>
+            </div>
+          </article>
+
+          <article class="card project-card">
+            <div>
+              <div class="project-num">Additional CAD Work</div>
+              <h3>Mechanical &amp; Architectural CAD Projects</h3>
+              <p>
+                Created mechanical parts and assemblies in Autodesk Inventor, produced AutoCAD drawings,
+                and built residential architectural models in Revit.
+              </p>
+            </div>
+            <div class="tags">
+              <span class="tag">AutoCAD</span>
+              <span class="tag">Inventor</span>
+              <span class="tag">Revit</span>
+              <span class="tag">Technical Drawings</span>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="experience">
+      <div class="wrap">
+        <div class="section-head">
+          <div>
+            <div class="kicker">Experience</div>
+            <h2>Professional Experience</h2>
+          </div>
+          <p>
+            Experience that strengthened my quantitative decision-making, risk management,
+            financial organization, customer service, and ability to perform in fast-paced environments.
+          </p>
+        </div>
+
+        <div class="timeline">
+          <article class="timeline-item">
+            <div class="timeline-meta">Trading &amp; Analysis</div>
+            <div>
+              <h3>Allocated Trading Capital</h3>
+              <h4>Private Equity Firm</h4>
+              <p>
+                Earned access to proprietary trading capital by demonstrating consistent profitability,
+                disciplined risk management, and data-driven decision-making in simulated and live markets.
+                Developed and backtested strategies across equities, futures, and forex.
+              </p>
+            </div>
+          </article>
+
+          <article class="timeline-item">
+            <div class="timeline-meta">Operations</div>
+            <div>
+              <h3>Finance &amp; Operations Assistant</h3>
+              <h4>Bobby Sanders Basketball Camp</h4>
+              <p>
+                Managed concession operations by tracking daily sales, handling cash flow,
+                maintaining accurate financial records, and coordinating with staff in a fast-paced environment.
+              </p>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="skills">
+      <div class="wrap">
+        <div class="section-head">
+          <div>
+            <div class="kicker">Toolset</div>
+            <h2>Technical Skills</h2>
+          </div>
+          <p>
+            A growing engineering toolkit spanning CAD, mechanical design, analysis,
+            programming, technical documentation, and project work.
+          </p>
+        </div>
+
+        <div class="grid grid-3">
+          <article class="card skill-card">
+            <h3>CAD &amp; Design</h3>
+            <div class="skill-list">
+              <span class="skill">SolidWorks</span>
+              <span class="skill">AutoCAD</span>
+              <span class="skill">Autodesk Inventor</span>
+              <span class="skill">Revit</span>
+              <span class="skill">3D Modeling</span>
+              <span class="skill">Assemblies</span>
+              <span class="skill">Mechanical Design</span>
+              <span class="skill">Technical Drawings</span>
+              <span class="skill">3D Printing</span>
+            </div>
+          </article>
+
+          <article class="card skill-card">
+            <h3>Programming &amp; Analysis</h3>
+            <div class="skill-list">
+              <span class="skill">Python</span>
+              <span class="skill">Microsoft Excel</span>
+              <span class="skill">Microsoft Project</span>
+              <span class="skill">Microsoft Word</span>
+            </div>
+          </article>
+
+          <article class="card skill-card">
+            <h3>Languages</h3>
+            <div class="skill-list">
+              <span class="skill">English · Fluent</span>
+              <span class="skill">Spanish · Fluent</span>
+              <span class="skill">Italian · Basic</span>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="leadership">
+      <div class="wrap">
+        <div class="section-head">
+          <div>
+            <div class="kicker">Beyond Engineering</div>
+            <h2>Leadership &amp; Service</h2>
+          </div>
+          <p>
+            Leadership, cross-cultural collaboration, mentoring, service, and competitive teamwork
+            have shaped how I communicate and contribute within a group.
+          </p>
+        </div>
+
+        <div class="grid grid-2">
+          <article class="card">
+            <div class="project-num">Present</div>
+            <h3>Regnum Christi · Team Leader / Formator</h3>
+            <p>
+              Lead and mentor team members in formation activities, facilitate group discussions,
+              and support personal development through communication, accountability, and example.
+            </p>
+          </article>
+
+          <article class="card">
+            <div class="project-num">Rome, Italy · Summer 2026</div>
+            <h3>International Formators Course</h3>
+            <p>
+              Completed a 125-hour (3 ECTS) international formation program at the Pontifical Athenaeum
+              Regina Apostolorum, developing leadership, teamwork, communication, and cross-cultural collaboration.
+            </p>
+          </article>
+
+          <article class="card">
+            <div class="project-num">Houston, TX</div>
+            <h3>Regnum Christi &amp; Open Door Missions</h3>
+            <p>
+              Organized and distributed donations for the homeless community and supported service activities
+              for men in addiction recovery.
+            </p>
+          </article>
+
+          <article class="card">
+            <div class="project-num">School &amp; AAU</div>
+            <h3>Competitive Basketball</h3>
+            <p>
+              Competed through high school in district championships and national tournaments,
+              building teamwork, discipline, and leadership in high-pressure settings.
+            </p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="certifications">
+      <div class="wrap">
+        <div class="section-head">
+          <div>
+            <div class="kicker">Credentials</div>
+            <h2>Certifications &amp; Recognition</h2>
+          </div>
+          <p>
+            Formal credentials and recognition supporting my technical background,
+            leadership development, and broader academic involvement.
+          </p>
+        </div>
+
+        <div class="grid grid-3">
+          <article class="card cert-card">
+            <div>
+              <div class="project-num">Autodesk</div>
+              <h3>Autodesk Certified User: AutoCAD</h3>
+              <p>Certified February 23, 2022.</p>
+            </div>
+            <a class="btn" href="Autodesk_AutoCAD_Certification.pdf" target="_blank" rel="noopener">View Certificate ↗</a>
+          </article>
+
+          <article class="card cert-card">
+            <div>
+              <div class="project-num">Regnum Christi IFC</div>
+              <h3>International Formators Course</h3>
+              <p>125 hours completed, equivalent to 3 ECTS, in Rome during Summer 2026.</p>
+            </div>
+            <a class="btn" href="IFC_Certification.pdf" target="_blank" rel="noopener">View Certificate ↗</a>
+          </article>
+
+          <article class="card cert-card">
+            <div>
+              <div class="project-num">Honors &amp; Awards</div>
+              <h3>Recognition</h3>
+              <p>
+                National Hispanic Recognition Award (2022), ATA First Degree Black Belt,
+                Sophomore Basketball District Champions (2021–22), and Alodia Basketball Tournament Winner (2023).
+              </p>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="contact">
+      <div class="wrap">
+        <div class="contact-box">
+          <div>
+            <div class="kicker" style="color:#f0b9c2;">Contact</div>
+            <h2>Let’s build something that works.</h2>
+            <p>
+              I’m interested in mechanical engineering opportunities where I can contribute to real projects,
+              learn from experienced engineers, and keep developing my design and analysis skills.
+            </p>
+          </div>
+          <div class="contact-actions">
+            <a class="btn" href="mailto:samucolme@gmail.com">samucolme@gmail.com</a>
+            <a class="btn" href="Samuel_Colmenares_Resume.pdf" target="_blank" rel="noopener">Open Resume ↗</a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="wrap footer-row">
+      <span>Samuel Colmenares · Mechanical Engineering Portfolio</span>
+      <span>Katy, Texas · Texas A&amp;M University</span>
+    </div>
+  </footer>
+</body>
+</html>
