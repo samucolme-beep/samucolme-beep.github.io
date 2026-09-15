@@ -1,20 +1,16 @@
-Samuel Colmenares — Mechanical Engineering Portfolio
+Samuel Colmenares — Engineering Portfolio
 
-FILES
-- index.html — the website
-- Samuel_Colmenares_Resume_Updated_305.pdf — current resume
-- Autodesk_AutoCAD_Certification.pdf — AutoCAD certification
-- IFC_Certification.pdf — International Formators Course certificate
+Website: https://samucolme-beep.github.io/
 
-HOW TO PREVIEW
-Open index.html in any modern browser.
+UPDATE YOUR RESUME
+1. Name your newest PDF resume.pdf before uploading.
+2. On GitHub, open this repository and choose Add file > Upload files.
+3. Upload resume.pdf to the root of the repository and commit the change.
+4. Wait for GitHub Pages to finish deploying. All resume buttons keep working.
 
-HOW TO PUBLISH
-Upload the contents of this folder to any static website host.
-The site is self-contained and does not require a build process or dependencies.
+UPDATE CONTENT
+Edit index.html for your profile, skills, and project descriptions.
+Edit styles.css for the visual design. Images are in assets/.
+Report filenames: meen-210-report.pdf, meen-305-report.pdf, project-portfolio.pdf.
 
-Suggested site title:
-Samuel Colmenares | Mechanical Engineering Portfolio
-
-Suggested URL slug:
-samuel-colmenares
+The supplied project reports distinguish Samuel’s individual work from team results.
