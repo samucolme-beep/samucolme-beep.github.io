@@ -2,7 +2,7 @@ Samuel Colmenares — Mechanical Engineering Portfolio
 
 FILES
 - index.html — the website
-- Samuel_Colmenares_Resume.pdf — current resume
+- Samuel_Colmenares_Resume_Updated_305.pdf — current resume
 - Autodesk_AutoCAD_Certification.pdf — AutoCAD certification
 - IFC_Certification.pdf — International Formators Course certificate
 
